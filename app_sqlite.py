@@ -43,7 +43,7 @@ SQL:
 {original_sql}
 """
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": "Jesteś ekspertem SQL i optymalizujesz zapytania pod kątem wydajności i czytelności w SQLite."},
             {"role": "user", "content": prompt}
