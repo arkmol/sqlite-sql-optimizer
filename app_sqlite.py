@@ -5,7 +5,7 @@ import os
 import pandas as pd
 
 # 🔐 OpenAI API Key
-client = OpenAI(api_key=st.secrets.get("OPENAI_API_KEY", "sk-..."))
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 DB_PATH = "demo.db"
 
