@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import sqlite3
 import os
 import pandas as pd
@@ -42,7 +42,7 @@ Nie zmieniaj logiki działania zapytania.
 SQL:
 {original_sql}
 """
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
         messages=[
             {"role": "system", "content": "Jesteś ekspertem SQL i optymalizujesz zapytania pod kątem wydajności i czytelności w SQLite."},
@@ -50,7 +50,8 @@ SQL:
         ],
         temperature=0.2
     )
-    return {"optimized_text": response['choices'][0]['message']['content']}
+
+    return {"optimized_text": response.choices[0].message.content}
 
 def run_query(query):
     conn = sqlite3.connect(DB_PATH)
