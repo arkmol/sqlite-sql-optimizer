@@ -5,7 +5,7 @@ import os
 import pandas as pd
 
 # 🔐 OpenAI API Key
-openai.api_key = st.secrets.get("OPENAI_API_KEY", "sk-...")
+client = OpenAI(api_key=st.secrets.get("OPENAI_API_KEY", "sk-..."))
 
 DB_PATH = "demo.db"
 
@@ -50,7 +50,6 @@ SQL:
         ],
         temperature=0.2
     )
-
     return {"optimized_text": response.choices[0].message.content}
 
 def run_query(query):
